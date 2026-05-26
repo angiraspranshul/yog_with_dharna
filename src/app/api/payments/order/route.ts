@@ -2,8 +2,13 @@ import { NextResponse } from "next/server";
 import axios from "axios";
 
 export async function POST(request: Request) {
+  let amount = 0;
+  let bookingId = "";
+  
   try {
-    const { amount, bookingId } = await request.json();
+    const body = await request.json();
+    amount = body.amount;
+    bookingId = body.bookingId;
 
     if (!amount || !bookingId) {
       return NextResponse.json(

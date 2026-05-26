@@ -61,7 +61,7 @@ export default async function BookPage({
 }: {
   searchParams: Promise<{ class?: string }>;
 }) {
-  let classes = [];
+  let classes: any[] = [];
   let dbError = false;
 
   try {

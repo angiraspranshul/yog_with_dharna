@@ -63,7 +63,7 @@ const fallbackClasses = [
 export const revalidate = 60;
 
 export default async function ClassesPage() {
-  let classes = [];
+  let classes: any[] = [];
   let dbError = false;
 
   try {
@@ -94,7 +94,7 @@ export default async function ClassesPage() {
       {/* Directory Grid */}
       <section className="py-20 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayClasses.map((c) => (
+          {displayClasses.map((c: any) => (
             <div 
               key={c.id} 
               className="glass-effect rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-border flex flex-col h-full group hover:-translate-y-1"

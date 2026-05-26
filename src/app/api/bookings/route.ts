@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     }
 
     // Use Prisma interactive transaction to guarantee database-level concurrency safety
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       // 1. Fetch slot with pessimistic locking (if supported) or strict checks
       const slot = await tx.timeSlot.findUnique({
         where: { id: slotId },

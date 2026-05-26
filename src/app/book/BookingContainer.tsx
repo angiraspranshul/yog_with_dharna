@@ -19,8 +19,8 @@ interface TimeSlot {
   date: string;
   startTime: string;
   endTime: string;
-  capacity: int;
-  bookedCount: int;
+  capacity: number;
+  bookedCount: number;
 }
 
 export default function BookingContainer({

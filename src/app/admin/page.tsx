@@ -14,9 +14,9 @@ export default async function AdminPage() {
     redirect("/admin/login");
   }
 
-  let bookings = [];
-  let classes = [];
-  let slots = [];
+  let bookings: any[] = [];
+  let classes: any[] = [];
+  let slots: any[] = [];
   let dbError = false;
 
   try {
