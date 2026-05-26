@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String
+  phone     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+}
+
+model Class {
+  id          String     @id @default(uuid())
+  title       String
+  description String
+  duration    Int        // duration in minutes
+  level       String     // beginner, intermediate, all_levels
+  price       Float      // price in INR
+  imageUrl    String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  slots       TimeSlot[]
+}
+
+model TimeSlot {
+  id          String    @id @default(uuid())
+  classId     String
+  class       Class     @relation(fields: [classId], references: [id], onDelete: Cascade)
+  date        DateTime  // date of the slot
+  startTime   String    // e.g. "08:00"
+  endTime     String    // e.g. "09:00"
+  capacity    Int
+  bookedCount Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  bookings    Booking[]
+}
+
+model Booking {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  slotId    String
+  slot      TimeSlot @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  status    String   // PENDING, PAID, CANCELLED
+  paymentId String?  @unique // Razorpay payment ID
+  orderId   String?  @unique // Razorpay order ID
+  amount    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
