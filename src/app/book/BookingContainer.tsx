@@ -206,7 +206,7 @@ export default function BookingContainer({
   if (bookingSuccess) {
     return (
       <div className="max-w-2xl mx-auto glass-effect border border-border rounded-3xl p-8 sm:p-12 text-center animate-fade-in-up shadow-xl mt-4">
-        <div className="w-20 h-20 rounded-full gold-gradient-bg flex items-center justify-center text-white text-4xl mx-auto shadow-md mb-8 animate-bounce">
+        <div className="w-20 h-20 rounded-full brand-gradient-bg flex items-center justify-center text-white text-4xl mx-auto shadow-md mb-8 animate-bounce">
           ✓
         </div>
         <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 dark:text-stone-100 mb-4">
@@ -232,7 +232,7 @@ export default function BookingContainer({
           </div>
           <div className="flex justify-between items-center border-t border-border/50 pt-2.5">
             <span className="text-muted font-medium">Amount paid</span>
-            <span className="gold-gradient-text font-bold text-lg">₹{bookingSuccess.price}</span>
+            <span className="brand-gradient-text font-bold text-lg">₹{bookingSuccess.price}</span>
           </div>
         </div>
 
@@ -242,7 +242,7 @@ export default function BookingContainer({
             href={bookingSuccess.meetLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2.5 w-full py-4 rounded-full gold-gradient-bg text-white hover:shadow-lg transition-all duration-300 font-semibold transform hover:-translate-y-0.5"
+            className="flex items-center justify-center gap-2.5 w-full py-4 rounded-full brand-gradient-bg text-white hover:shadow-lg transition-all duration-300 font-semibold transform hover:-translate-y-0.5"
           >
             <svg className="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
@@ -276,7 +276,7 @@ export default function BookingContainer({
               id="class-select"
               value={selectedClassId}
               onChange={(e) => setSelectedClassId(e.target.value)}
-              className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-4 px-5 rounded-2xl font-medium focus:outline-none focus:ring-1 focus:ring-gold appearance-none cursor-pointer text-sm sm:text-base"
+              className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-4 px-5 rounded-2xl font-medium focus:outline-none focus:ring-1 focus:ring-brand appearance-none cursor-pointer text-sm sm:text-base"
             >
               {classes.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -314,7 +314,7 @@ export default function BookingContainer({
                   onClick={() => setSelectedDate(date)}
                   className={`flex flex-col items-center justify-center p-3 rounded-2xl transition-all duration-300 border focus:outline-none ${
                     isSelected
-                      ? "gold-gradient-bg border-transparent text-white shadow-md scale-[1.03]"
+                      ? "brand-gradient-bg border-transparent text-white shadow-md scale-[1.03]"
                       : "bg-stone-50 dark:bg-stone-900 border-border hover:bg-stone-100 dark:hover:bg-stone-850"
                   }`}
                 >
@@ -329,7 +329,7 @@ export default function BookingContainer({
                   </span>
                   
                   <span className={`text-[9px] uppercase font-bold tracking-wider ${
-                    isSelected ? "text-white/90" : isToday ? "text-gold" : "text-muted/60"
+                    isSelected ? "text-white/90" : isToday ? "text-brand" : "text-muted/60"
                   }`}>
                     {isToday ? "Today" : format(date, "MMM")}
                   </span>
@@ -347,7 +347,7 @@ export default function BookingContainer({
 
           {loadingSlots ? (
             <div className="flex flex-col items-center justify-center py-10 gap-3 text-muted text-sm font-semibold">
-              <span className="w-7.5 h-7.5 rounded-full border-2 border-gold border-t-transparent animate-spin"></span>
+              <span className="w-7.5 h-7.5 rounded-full border-2 border-brand border-t-transparent animate-spin"></span>
               Checking slot availability...
             </div>
           ) : slotsError ? (
@@ -375,7 +375,7 @@ export default function BookingContainer({
                       isFull
                         ? "bg-stone-100/50 dark:bg-stone-900/30 border-border opacity-50 cursor-not-allowed"
                         : isSelected
-                        ? "gold-gradient-bg border-transparent text-white shadow-md scale-[1.01]"
+                        ? "brand-gradient-bg border-transparent text-white shadow-md scale-[1.01]"
                         : "bg-stone-50 dark:bg-stone-900 border-border hover:bg-stone-100 dark:hover:bg-stone-850"
                     }`}
                   >
@@ -463,7 +463,7 @@ export default function BookingContainer({
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="e.g. Priya Sharma"
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
               />
             </div>
 
@@ -478,7 +478,7 @@ export default function BookingContainer({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="e.g. priya@example.com"
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
               />
             </div>
 
@@ -492,7 +492,7 @@ export default function BookingContainer({
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="e.g. +91 98765 43210"
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
               />
             </div>
 
@@ -500,7 +500,7 @@ export default function BookingContainer({
             <div className="border-t border-border/60 pt-5 mt-2 flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <span className="font-medium text-muted">Subtotal Price</span>
-                <span className="gold-gradient-text font-bold text-xl sm:text-2xl">
+                <span className="brand-gradient-text font-bold text-xl sm:text-2xl">
                   ₹{activeClass?.price}
                 </span>
               </div>
@@ -508,7 +508,7 @@ export default function BookingContainer({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4.5 rounded-2xl gold-gradient-bg text-white hover:shadow-lg transition-all duration-300 font-semibold transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 shadow-md"
+                className="w-full py-4.5 rounded-2xl brand-gradient-bg text-white hover:shadow-lg transition-all duration-300 font-semibold transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 shadow-md"
               >
                 {isSubmitting ? (
                   <>

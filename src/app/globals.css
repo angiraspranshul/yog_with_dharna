@@ -1,29 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  /* HSL-Tailored Color Palette (Warm Sand, Deep Slate, Terracotta Gold, Soft Forest Green) */
-  --background: #fdfbf7;      /* Warm ivory/sand background */
-  --foreground: #1c1917;      /* Warm charcoal text */
-  --card-bg: #ffffff;         /* Pure white surface */
-  --card-border: #f2ede4;     /* Very soft warm divider */
-  --accent-gold: #c29547;     /* Warm bronze/gold */
-  --accent-gold-hover: #b08134;
-  --accent-terracotta: #cc6b49;
-  --accent-sage: #4f6a5b;     /* Earthy sage green */
-  --muted-text: #6b6661;
+  /* High-Contrast Professional Palette (Clean Monochrome & Emerald) */
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card-bg: #fafafa;
+  --card-border: #e4e4e7;
+  --accent-brand: #059669; /* Emerald */
+  --accent-brand-hover: #047857;
+  --accent-secondary: #0f766e; /* Deep Teal */
+  --muted-text: #52525b; /* Zinc 600 */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f0e0c;    /* Very dark warm obsidian */
-    --foreground: #f4f3f0;    /* Warm pearl text */
-    --card-bg: #171512;       /* Rich basalt surface */
-    --card-border: #2b2620;   /* Muted dark divider */
-    --accent-gold: #e2b66e;
-    --accent-gold-hover: #f1cd93;
-    --accent-terracotta: #e08363;
-    --accent-sage: #739381;
-    --muted-text: #a19a93;
+    --background: #09090b;
+    --foreground: #fafafa;
+    --card-bg: #18181b;
+    --card-border: #27272a;
+    --accent-brand: #10b981;
+    --accent-brand-hover: #34d399;
+    --accent-secondary: #2dd4bf;
+    --muted-text: #a1a1aa;
   }
 }
 
@@ -32,10 +30,9 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card-bg);
   --color-border: var(--card-border);
-  --color-gold: var(--accent-gold);
-  --color-gold-hover: var(--accent-gold-hover);
-  --color-terracotta: var(--accent-terracotta);
-  --color-sage: var(--accent-sage);
+  --color-brand: var(--accent-brand);
+  --color-brand-hover: var(--accent-brand-hover);
+  --color-brand-secondary: var(--accent-secondary);
   --color-muted: var(--muted-text);
   
   --font-sans: var(--font-outfit), var(--font-geist-sans), sans-serif;
@@ -70,25 +67,25 @@ body {
 
 /* Premium micro-interactions and utilities */
 .glass-effect {
-  background: rgba(253, 251, 247, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(242, 237, 228, 0.5);
+  border: 1px solid rgba(228, 228, 231, 0.5);
 }
 
 .dark .glass-effect {
-  background: rgba(23, 21, 18, 0.7);
+  background: rgba(24, 24, 27, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(43, 38, 32, 0.5);
+  border: 1px solid rgba(39, 39, 42, 0.5);
 }
 
-.gold-gradient-bg {
-  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-terracotta) 100%);
+.brand-gradient-bg {
+  background: linear-gradient(135deg, var(--accent-brand) 0%, var(--accent-secondary) 100%);
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-terracotta) 100%);
+.brand-gradient-text {
+  background: linear-gradient(135deg, var(--accent-brand) 0%, var(--accent-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

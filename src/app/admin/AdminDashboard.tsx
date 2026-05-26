@@ -124,7 +124,7 @@ export default function AdminDashboard({
           onClick={() => { setActiveTab("bookings"); setFeedback(null); }}
           className={`px-5 py-3 rounded-t-xl transition-colors shrink-0 focus:outline-none border-b-2 ${
             activeTab === "bookings"
-              ? "border-gold text-gold font-semibold"
+              ? "border-brand text-brand font-semibold"
               : "border-transparent text-muted hover:text-foreground"
           }`}
         >
@@ -134,7 +134,7 @@ export default function AdminDashboard({
           onClick={() => { setActiveTab("classes"); setFeedback(null); }}
           className={`px-5 py-3 rounded-t-xl transition-colors shrink-0 focus:outline-none border-b-2 ${
             activeTab === "classes"
-              ? "border-gold text-gold font-semibold"
+              ? "border-brand text-brand font-semibold"
               : "border-transparent text-muted hover:text-foreground"
           }`}
         >
@@ -144,7 +144,7 @@ export default function AdminDashboard({
           onClick={() => { setActiveTab("slots"); setFeedback(null); }}
           className={`px-5 py-3 rounded-t-xl transition-colors shrink-0 focus:outline-none border-b-2 ${
             activeTab === "slots"
-              ? "border-gold text-gold font-semibold"
+              ? "border-brand text-brand font-semibold"
               : "border-transparent text-muted hover:text-foreground"
           }`}
         >
@@ -197,7 +197,7 @@ export default function AdminDashboard({
                         <span className="text-muted text-[10px] sm:text-xs">{b.slot.startTime} - {b.slot.endTime}</span>
                       </div>
                     </td>
-                    <td className="py-5 px-6 font-bold gold-gradient-text text-base">
+                    <td className="py-5 px-6 font-bold brand-gradient-text text-base">
                       ₹{b.amount}
                     </td>
                     <td className="py-5 px-6 text-center">
@@ -234,7 +234,7 @@ export default function AdminDashboard({
                   <div className="flex items-center justify-between text-xs font-semibold mt-auto border-t border-border/50 pt-3">
                     <span className="text-muted">{c.level}</span>
                     <span className="text-muted">{c.duration} mins</span>
-                    <span className="gold-gradient-text text-sm">₹{c.price}</span>
+                    <span className="brand-gradient-text text-sm">₹{c.price}</span>
                   </div>
                 </div>
               ))}
@@ -256,7 +256,7 @@ export default function AdminDashboard({
                 value={newClass.title}
                 onChange={(e) => setNewClass({ ...newClass, title: e.target.value })}
                 placeholder="e.g. Hatha Yoga Flow"
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
               />
             </div>
 
@@ -269,7 +269,7 @@ export default function AdminDashboard({
                   required
                   value={newClass.duration}
                   onChange={(e) => setNewClass({ ...newClass, duration: parseInt(e.target.value) || 0 })}
-                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
                 />
               </div>
 
@@ -281,7 +281,7 @@ export default function AdminDashboard({
                   required
                   value={newClass.price}
                   onChange={(e) => setNewClass({ ...newClass, price: parseFloat(e.target.value) || 0 })}
-                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
                 />
               </div>
             </div>
@@ -292,7 +292,7 @@ export default function AdminDashboard({
                 id="c-level"
                 value={newClass.level}
                 onChange={(e) => setNewClass({ ...newClass, level: e.target.value })}
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50 cursor-pointer"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50 cursor-pointer"
               >
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
@@ -310,14 +310,14 @@ export default function AdminDashboard({
                 value={newClass.description}
                 onChange={(e) => setNewClass({ ...newClass, description: e.target.value })}
                 placeholder="Mindful poses targeting physical structure..."
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50 resize-none"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50 resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={formLoading}
-              className="w-full py-3.5 rounded-xl gold-gradient-bg text-white hover:shadow-md transition-all duration-300 font-semibold transform hover:-translate-y-0.5 flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-3.5 rounded-xl brand-gradient-bg text-white hover:shadow-md transition-all duration-300 font-semibold transform hover:-translate-y-0.5 flex items-center justify-center gap-2 shadow-sm"
             >
               {formLoading ? "Creating..." : "Save Class Type"}
             </button>
@@ -357,7 +357,7 @@ export default function AdminDashboard({
                         <span className={`px-2 py-0.5 rounded text-[10px] ${
                           s.bookedCount >= s.capacity 
                             ? "bg-rose-500/10 text-rose-500" 
-                            : "bg-gold/10 text-gold"
+                            : "bg-brand/10 text-brand"
                         }`}>
                           {s.bookedCount} / {s.capacity}
                         </span>
@@ -381,7 +381,7 @@ export default function AdminDashboard({
                 id="s-class"
                 value={newSlot.classId}
                 onChange={(e) => setNewSlot({ ...newSlot, classId: e.target.value })}
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50 cursor-pointer"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50 cursor-pointer"
               >
                 {classes.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -399,7 +399,7 @@ export default function AdminDashboard({
                 required
                 value={newSlot.date}
                 onChange={(e) => setNewSlot({ ...newSlot, date: e.target.value })}
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50 cursor-pointer"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50 cursor-pointer"
               />
             </div>
 
@@ -413,7 +413,7 @@ export default function AdminDashboard({
                   placeholder="e.g. 08:00"
                   value={newSlot.startTime}
                   onChange={(e) => setNewSlot({ ...newSlot, startTime: e.target.value })}
-                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
                 />
               </div>
 
@@ -426,7 +426,7 @@ export default function AdminDashboard({
                   placeholder="e.g. 09:00"
                   value={newSlot.endTime}
                   onChange={(e) => setNewSlot({ ...newSlot, endTime: e.target.value })}
-                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
                 />
               </div>
             </div>
@@ -439,14 +439,14 @@ export default function AdminDashboard({
                 required
                 value={newSlot.capacity}
                 onChange={(e) => setNewSlot({ ...newSlot, capacity: parseInt(e.target.value) || 0 })}
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
               />
             </div>
 
             <button
               type="submit"
               disabled={formLoading}
-              className="w-full py-3.5 rounded-xl gold-gradient-bg text-white hover:shadow-md transition-all duration-300 font-semibold transform hover:-translate-y-0.5 flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-3.5 rounded-xl brand-gradient-bg text-white hover:shadow-md transition-all duration-300 font-semibold transform hover:-translate-y-0.5 flex items-center justify-center gap-2 shadow-sm"
             >
               {formLoading ? "Scheduling..." : "Open Calendar Slot"}
             </button>

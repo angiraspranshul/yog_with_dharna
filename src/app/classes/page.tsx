@@ -102,13 +102,13 @@ export default async function ClassesPage() {
               {/* Visual Card Header */}
               <div className="h-48 w-full bg-stone-100 dark:bg-stone-900 relative overflow-hidden flex items-center justify-center border-b border-border">
                 <span className="text-7xl opacity-20 filter grayscale group-hover:scale-105 transition-transform duration-500">🧘‍♀️</span>
-                <div className="absolute top-4 right-4 bg-gold/10 text-gold px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-gold/20">
+                <div className="absolute top-4 right-4 bg-brand/10 text-brand px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-brand/20">
                   {c.level}
                 </div>
               </div>
               
               <div className="p-8 flex flex-col flex-1 gap-4">
-                <h2 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 dark:text-stone-50 group-hover:text-gold transition-colors">
+                <h2 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 dark:text-stone-50 group-hover:text-brand transition-colors">
                   {c.title}
                 </h2>
                 <p className="text-muted text-sm sm:text-base leading-relaxed line-clamp-4">
@@ -123,7 +123,7 @@ export default async function ClassesPage() {
                   </div>
                   <div className="flex flex-col text-right">
                     <span className="text-[10px] text-muted/80 uppercase tracking-widest font-semibold">Price</span>
-                    <span className="gold-gradient-text font-bold text-base sm:text-lg">₹{c.price}</span>
+                    <span className="brand-gradient-text font-bold text-base sm:text-lg">₹{c.price}</span>
                   </div>
                 </div>
               </div>
@@ -132,7 +132,7 @@ export default async function ClassesPage() {
               <div className="px-8 pb-8 pt-2">
                 <Link 
                   href={`/book?class=${c.id}`} 
-                  className="block w-full py-4 text-center rounded-2xl gold-gradient-bg text-white hover:shadow-md transition-all duration-300 font-semibold text-sm transform hover:-translate-y-0.5"
+                  className="block w-full py-4 text-center rounded-2xl brand-gradient-bg text-white hover:shadow-md transition-all duration-300 font-semibold text-sm transform hover:-translate-y-0.5"
                 >
                   Book Class Session
                 </Link>

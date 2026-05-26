@@ -59,14 +59,14 @@ export default async function Home() {
           
           {/* Left Text */}
           <div className="lg:col-span-7 flex flex-col gap-6 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/5 text-gold font-medium text-xs tracking-wider uppercase w-fit">
-              <span className="w-1.5 h-1.5 rounded-full gold-gradient-bg animate-ping"></span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-brand/30 bg-brand/5 text-brand font-medium text-xs tracking-wider uppercase w-fit">
+              <span className="w-1.5 h-1.5 rounded-full brand-gradient-bg animate-ping"></span>
               Live & Personalized Yoga Sessions
             </div>
             
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-stone-900 dark:text-stone-50">
               Nurture your soul. <br />
-              Strengthen your <span className="gold-gradient-text">Inner Self</span>.
+              Strengthen your <span className="brand-gradient-text">Inner Self</span>.
             </h1>
             
             <p className="text-muted text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl">
@@ -76,7 +76,7 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row gap-4 mt-4 font-semibold text-sm sm:text-base">
               <Link 
                 href="/book" 
-                className="px-8 py-4 rounded-full gold-gradient-bg text-white hover:shadow-lg transition-all duration-300 text-center transform hover:-translate-y-0.5"
+                className="px-8 py-4 rounded-full brand-gradient-bg text-white hover:shadow-lg transition-all duration-300 text-center transform hover:-translate-y-0.5"
               >
                 Book Your Free First Class
               </Link>
@@ -91,15 +91,15 @@ export default async function Home() {
 
           {/* Right Visual Artifact */}
           <div className="lg:col-span-5 flex justify-center items-center relative animate-float">
-            <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border border-gold/20 flex items-center justify-center p-6 bg-gold/[0.02]">
-              <div className="w-full h-full rounded-full border border-gold/40 flex items-center justify-center p-8 bg-gold/[0.04] shadow-inner">
-                <div className="w-full h-full rounded-full gold-gradient-bg flex items-center justify-center text-white text-7xl sm:text-8xl md:text-9xl font-serif font-bold shadow-lg">
+            <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border border-brand/20 flex items-center justify-center p-6 bg-brand/[0.02]">
+              <div className="w-full h-full rounded-full border border-brand/40 flex items-center justify-center p-8 bg-brand/[0.04] shadow-inner">
+                <div className="w-full h-full rounded-full brand-gradient-bg flex items-center justify-center text-white text-7xl sm:text-8xl md:text-9xl font-serif font-bold shadow-lg">
                   ॐ
                 </div>
               </div>
             </div>
             {/* Soft backdrop blur decoration */}
-            <div className="absolute w-64 h-64 bg-gold/10 blur-3xl -z-10 rounded-full"></div>
+            <div className="absolute w-64 h-64 bg-brand/10 blur-3xl -z-10 rounded-full"></div>
           </div>
         </div>
       </section>
@@ -119,10 +119,10 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             {/* Feature 1 */}
             <div className="glass-effect rounded-3xl p-8 hover:shadow-md transition-all duration-300 border border-border group hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-2xl gold-gradient-bg flex items-center justify-center text-white mb-6">
+              <div className="w-12 h-12 rounded-2xl brand-gradient-bg flex items-center justify-center text-white mb-6">
                 🧘‍♂️
               </div>
-              <h3 className="font-serif text-xl font-semibold mb-3 text-stone-900 dark:text-stone-50 group-hover:text-gold transition-colors">
+              <h3 className="font-serif text-xl font-semibold mb-3 text-stone-900 dark:text-stone-50 group-hover:text-brand transition-colors">
                 Personalized Alignment
               </h3>
               <p className="text-muted text-sm sm:text-base leading-relaxed">
@@ -132,10 +132,10 @@ export default async function Home() {
 
             {/* Feature 2 */}
             <div className="glass-effect rounded-3xl p-8 hover:shadow-md transition-all duration-300 border border-border group hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-2xl gold-gradient-bg flex items-center justify-center text-white mb-6">
+              <div className="w-12 h-12 rounded-2xl brand-gradient-bg flex items-center justify-center text-white mb-6">
                 💨
               </div>
-              <h3 className="font-serif text-xl font-semibold mb-3 text-stone-900 dark:text-stone-50 group-hover:text-gold transition-colors">
+              <h3 className="font-serif text-xl font-semibold mb-3 text-stone-900 dark:text-stone-50 group-hover:text-brand transition-colors">
                 Pranayama & Integration
               </h3>
               <p className="text-muted text-sm sm:text-base leading-relaxed">
@@ -145,10 +145,10 @@ export default async function Home() {
 
             {/* Feature 3 */}
             <div className="glass-effect rounded-3xl p-8 hover:shadow-md transition-all duration-300 border border-border group hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-2xl gold-gradient-bg flex items-center justify-center text-white mb-6">
+              <div className="w-12 h-12 rounded-2xl brand-gradient-bg flex items-center justify-center text-white mb-6">
                 🌱
               </div>
-              <h3 className="font-serif text-xl font-semibold mb-3 text-stone-900 dark:text-stone-50 group-hover:text-gold transition-colors">
+              <h3 className="font-serif text-xl font-semibold mb-3 text-stone-900 dark:text-stone-50 group-hover:text-brand transition-colors">
                 Holistic Lifestyle
               </h3>
               <p className="text-muted text-sm sm:text-base leading-relaxed">
@@ -174,7 +174,7 @@ export default async function Home() {
             </div>
             <Link 
               href="/classes" 
-              className="text-gold hover:text-gold-hover font-semibold text-sm sm:text-base flex items-center gap-2 group tracking-wide uppercase shrink-0"
+              className="text-brand hover:text-brand-hover font-semibold text-sm sm:text-base flex items-center gap-2 group tracking-wide uppercase shrink-0"
             >
               See All Classes 
               <span className="transition-transform group-hover:translate-x-1 duration-300">→</span>
@@ -190,13 +190,13 @@ export default async function Home() {
                 {/* Visual card placeholder top */}
                 <div className="h-44 w-full bg-stone-100 dark:bg-stone-900 relative overflow-hidden flex items-center justify-center border-b border-border">
                   <span className="text-6xl opacity-20 filter grayscale group-hover:scale-105 transition-transform duration-500">🧘‍♀️</span>
-                  <div className="absolute top-4 right-4 bg-gold/10 text-gold px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-gold/20">
+                  <div className="absolute top-4 right-4 bg-brand/10 text-brand px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-brand/20">
                     {c.level}
                   </div>
                 </div>
                 
                 <div className="p-8 flex flex-col flex-1 gap-4">
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 dark:text-stone-50 group-hover:text-gold transition-colors">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 dark:text-stone-50 group-hover:text-brand transition-colors">
                     {c.title}
                   </h3>
                   <p className="text-muted text-sm sm:text-base leading-relaxed line-clamp-3">
@@ -211,7 +211,7 @@ export default async function Home() {
                     </div>
                     <div className="flex flex-col text-right">
                       <span className="text-[10px] text-muted/80 uppercase tracking-widest font-semibold">Price</span>
-                      <span className="gold-gradient-text font-bold text-base sm:text-lg">₹{c.price}</span>
+                      <span className="brand-gradient-text font-bold text-base sm:text-lg">₹{c.price}</span>
                     </div>
                   </div>
                 </div>
@@ -219,7 +219,7 @@ export default async function Home() {
                 <div className="px-8 pb-8 pt-2">
                   <Link 
                     href={`/book?class=${c.id}`} 
-                    className="block w-full py-3.5 text-center rounded-2xl gold-gradient-bg text-white hover:shadow-md transition-all duration-300 font-semibold text-sm transform hover:-translate-y-0.5"
+                    className="block w-full py-3.5 text-center rounded-2xl brand-gradient-bg text-white hover:shadow-md transition-all duration-300 font-semibold text-sm transform hover:-translate-y-0.5"
                   >
                     Book Class Session
                   </Link>
@@ -245,7 +245,7 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="glass-effect rounded-3xl p-8 border border-border text-left relative">
-              <span className="absolute top-4 right-8 font-serif text-6xl text-gold/20 select-none">“</span>
+              <span className="absolute top-4 right-8 font-serif text-6xl text-brand/20 select-none">“</span>
               <p className="text-muted text-sm sm:text-base leading-relaxed italic mb-6">
                 "Practicing with Dhaarna has completely shifted my mindset towards structural core alignment. I used to suffer from severe lower back discomfort, but her tailored adjustments and steady Vinyasa sequences have restored my spinal flexibility entirely."
               </p>
@@ -253,7 +253,7 @@ export default async function Home() {
             </div>
 
             <div className="glass-effect rounded-3xl p-8 border border-border text-left relative">
-              <span className="absolute top-4 right-8 font-serif text-6xl text-gold/20 select-none">“</span>
+              <span className="absolute top-4 right-8 font-serif text-6xl text-brand/20 select-none">“</span>
               <p className="text-muted text-sm sm:text-base leading-relaxed italic mb-6">
                 "Dhaarna's Pranayama and meditation flows are like hitting a deep mental reset button. After a stressful 60-hour work week, her Sunday Restorative sessions completely melt my anxiety. Highly recommend her live slots!"
               </p>
@@ -267,7 +267,7 @@ export default async function Home() {
       <section className="py-24 relative overflow-hidden bg-stone-950 text-white">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col gap-6 relative z-10">
           <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight">
-            Ready to Begin Your <span className="gold-gradient-text">Yoga Path</span>?
+            Ready to Begin Your <span className="brand-gradient-text">Yoga Path</span>?
           </h2>
           <p className="text-stone-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
             Reserve your dynamic Hatha flow or calming Pranayama slot in under 60 seconds. Manage your schedule directly in the cloud.
@@ -275,13 +275,13 @@ export default async function Home() {
           <div className="mt-4">
             <Link 
               href="/book" 
-              className="inline-block px-10 py-4 rounded-full gold-gradient-bg text-white hover:shadow-lg transition-all duration-300 font-semibold text-base transform hover:-translate-y-0.5 active:translate-y-0 shadow-md"
+              className="inline-block px-10 py-4 rounded-full brand-gradient-bg text-white hover:shadow-lg transition-all duration-300 font-semibold text-base transform hover:-translate-y-0.5 active:translate-y-0 shadow-md"
             >
               Reserve Your Slot Now
             </Link>
           </div>
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(194,149,71,0.08)_0%,transparent_70%)]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(5,150,105,0.08)_0%,transparent_70%)]"></div>
       </section>
 
       <Footer />

@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans selection:bg-gold/20 selection:text-gold">
+      <body className="min-h-full flex flex-col font-sans selection:bg-brand/20 selection:text-brand">
         {children}
       </body>
     </html>

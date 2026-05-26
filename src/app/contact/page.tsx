@@ -53,14 +53,14 @@ export default function ContactPage() {
             <div className="flex flex-col gap-6">
               {/* Email */}
               <div className="flex gap-4.5 items-start">
-                <div className="w-11 h-11 rounded-2xl border border-gold/25 bg-gold/5 flex items-center justify-center text-gold shadow-sm shrink-0">
+                <div className="w-11 h-11 rounded-2xl border border-brand/25 bg-brand/5 flex items-center justify-center text-brand shadow-sm shrink-0">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div className="flex flex-col gap-0.5 text-sm sm:text-base">
                   <span className="font-semibold text-stone-900 dark:text-stone-100">Email Address</span>
-                  <a href="mailto:connect@yogwithdhaarna.com" className="text-muted hover:text-gold transition-colors">
+                  <a href="mailto:connect@yogwithdhaarna.com" className="text-muted hover:text-brand transition-colors">
                     connect@yogwithdhaarna.com
                   </a>
                 </div>
@@ -68,14 +68,14 @@ export default function ContactPage() {
 
               {/* Phone */}
               <div className="flex gap-4.5 items-start">
-                <div className="w-11 h-11 rounded-2xl border border-gold/25 bg-gold/5 flex items-center justify-center text-gold shadow-sm shrink-0">
+                <div className="w-11 h-11 rounded-2xl border border-brand/25 bg-brand/5 flex items-center justify-center text-brand shadow-sm shrink-0">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div className="flex flex-col gap-0.5 text-sm sm:text-base">
                   <span className="font-semibold text-stone-900 dark:text-stone-100">Phone Number</span>
-                  <a href="tel:+919876543210" className="text-muted hover:text-gold transition-colors">
+                  <a href="tel:+919876543210" className="text-muted hover:text-brand transition-colors">
                     +91 98765 43210
                   </a>
                 </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
 
               {/* Socials */}
               <div className="flex gap-4.5 items-start">
-                <div className="w-11 h-11 rounded-2xl border border-gold/25 bg-gold/5 flex items-center justify-center text-gold shadow-sm shrink-0">
+                <div className="w-11 h-11 rounded-2xl border border-brand/25 bg-brand/5 flex items-center justify-center text-brand shadow-sm shrink-0">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5" strokeWidth="2"/>
                     <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" strokeWidth="2"/>
@@ -92,7 +92,7 @@ export default function ContactPage() {
                 </div>
                 <div className="flex flex-col gap-0.5 text-sm sm:text-base">
                   <span className="font-semibold text-stone-900 dark:text-stone-100">Instagram Feed</span>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-gold transition-colors">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-brand transition-colors">
                     @yogwithdhaarna
                   </a>
                 </div>
@@ -124,7 +124,7 @@ export default function ContactPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Priyanjali Sen"
-                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
                 />
               </div>
 
@@ -139,7 +139,7 @@ export default function ContactPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. priyanjali@gmail.com"
-                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50"
+                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50"
                 />
               </div>
 
@@ -154,14 +154,14 @@ export default function ContactPage() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell us about your yoga history, targets, or custom plan requirements..."
-                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-gold text-stone-950 dark:text-stone-50 resize-y"
+                  className="w-full bg-stone-50 dark:bg-stone-900 border border-border py-3.5 px-4.5 rounded-xl font-medium focus:outline-none focus:ring-1 focus:ring-brand text-stone-950 dark:text-stone-50 resize-y"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-2xl gold-gradient-bg text-white hover:shadow-lg transition-all duration-300 font-semibold transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 shadow-md mt-2"
+                className="w-full py-4 rounded-2xl brand-gradient-bg text-white hover:shadow-lg transition-all duration-300 font-semibold transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 shadow-md mt-2"
               >
                 {loading ? (
                   <>
