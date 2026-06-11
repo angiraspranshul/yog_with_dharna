@@ -11,12 +11,12 @@ const levelStyles: Record<string, string> = {
 };
 
 const classes = [
-  { icon: '🌅', name: 'Morning Hatha', duration: '60 min', level: 'Beginner', price: 499 },
-  { icon: '🌊', name: 'Vinyasa Flow', duration: '75 min', level: 'Intermediate', price: 699 },
-  { icon: '🌙', name: 'Yin & Restore', duration: '60 min', level: 'All levels', price: 549 },
-  { icon: '🤰', name: 'Prenatal Yoga', duration: '45 min', level: 'Beginner', price: 599 },
-  { icon: '🔥', name: 'Power Yoga', duration: '60 min', level: 'Advanced', price: 749 },
-  { icon: '🪷', name: 'Meditation & Breathwork', duration: '30 min', level: 'All levels', price: 349 },
+  { img: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80', icon: '🌅', name: 'Morning Hatha', duration: '60 min', level: 'Beginner', price: 499 },
+  { img: 'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=900&q=80', icon: '🌊', name: 'Vinyasa Flow', duration: '75 min', level: 'Intermediate', price: 699 },
+  { img: 'https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=900&q=80', icon: '🌙', name: 'Yin & Restore', duration: '60 min', level: 'All levels', price: 549 },
+  { img: 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=900&q=80', icon: '🤰', name: 'Prenatal Yoga', duration: '45 min', level: 'Beginner', price: 599 },
+  { img: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=900&q=80', icon: '🔥', name: 'Power Yoga', duration: '60 min', level: 'Advanced', price: 749 },
+  { img: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=900&q=80', icon: '🪷', name: 'Meditation & Breathwork', duration: '30 min', level: 'All levels', price: 349 },
 ];
 ---
 
@@ -32,21 +32,31 @@ const classes = [
     <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
         classes.map((c) => (
-          <article class="flex flex-col rounded-2xl border border-slate-100 bg-white/80 p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-            <div class="text-4xl">{c.icon}</div>
-            <h2 class="mt-4 text-lg font-semibold text-slate-800">{c.name}</h2>
-            <div class="mt-3 flex items-center gap-3 text-sm text-slate-500">
-              <span>{c.duration}</span>
-              <span class={`rounded-full px-3 py-1 text-xs font-medium ${levelStyles[c.level]}`}>{c.level}</span>
+          <article class="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white/80 shadow-sm backdrop-blur transition-all hover:-translate-y-1 hover:shadow-md">
+            <div class="relative overflow-hidden">
+              <img
+                src={c.img}
+                alt={c.name}
+                class="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <span class="absolute left-4 top-4 rounded-full bg-white/85 px-2.5 py-1 text-lg shadow-sm backdrop-blur">{c.icon}</span>
             </div>
-            <div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-5">
-              <span class="text-lg font-semibold text-slate-900">₹{c.price}</span>
-              <a
-                href={`${base}/book/`}
-                class="rounded-full bg-soft px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-soft-dark"
-              >
-                Book
-              </a>
+            <div class="flex flex-1 flex-col p-6">
+              <h2 class="text-lg font-semibold text-slate-800">{c.name}</h2>
+              <div class="mt-3 flex items-center gap-3 text-sm text-slate-500">
+                <span>{c.duration}</span>
+                <span class={`rounded-full px-3 py-1 text-xs font-medium ${levelStyles[c.level]}`}>{c.level}</span>
+              </div>
+              <div class="mt-auto flex items-center justify-between border-t border-slate-100 pt-5">
+                <span class="text-lg font-semibold text-slate-900">₹{c.price}</span>
+                <a
+                  href={`${base}/book/`}
+                  class="rounded-full bg-soft px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-soft-dark"
+                >
+                  Book
+                </a>
+              </div>
             </div>
           </article>
         ))

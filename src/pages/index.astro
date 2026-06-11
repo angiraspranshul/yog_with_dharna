@@ -2,11 +2,50 @@
 import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const popularClasses = [
+  {
+    img: 'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=900&q=80',
+    name: 'Vinyasa Flow',
+    duration: '75 min',
+    level: 'Intermediate',
+    price: 699,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=900&q=80',
+    name: 'Yin & Restore',
+    duration: '60 min',
+    level: 'All levels',
+    price: 549,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=900&q=80',
+    name: 'Meditation & Breathwork',
+    duration: '30 min',
+    level: 'All levels',
+    price: 349,
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'Dhaarna\u2019s classes completely changed my relationship with my body. I leave every session feeling lighter.',
+    name: 'Ananya S.',
+  },
+  {
+    quote: 'The calmest hour of my week. Gentle guidance, zero judgment, and real progress in my practice.',
+    name: 'Rohit M.',
+  },
+  {
+    quote: 'I joined for flexibility and stayed for the peace of mind. Highly recommend the breathwork sessions.',
+    name: 'Priya K.',
+  },
+];
 ---
 
 <Layout title="Yoga with Dhaarna — Find your balance, breathe your truth">
   <!-- Hero -->
-  <section class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
+  <section class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:py-24">
     <div>
       <p class="mb-4 text-sm font-medium uppercase tracking-widest text-soft">Yoga with Dhaarna</p>
       <h1 class="text-4xl font-semibold leading-tight tracking-tight text-slate-900 md:text-6xl">
@@ -25,39 +64,139 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </a>
         <a
           href={`${base}/classes/`}
-          class="rounded-full border border-soft/40 px-7 py-3 font-medium text-soft transition-all hover:-translate-y-0.5 hover:bg-soft-light"
+          class="rounded-full border border-soft/40 bg-white/70 px-7 py-3 font-medium text-soft backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-soft-light"
         >
           Explore Classes
         </a>
       </div>
+      <dl class="mt-12 flex gap-10">
+        <div>
+          <dt class="text-2xl font-semibold text-slate-900">500+</dt>
+          <dd class="text-sm text-slate-500">Happy students</dd>
+        </div>
+        <div>
+          <dt class="text-2xl font-semibold text-slate-900">6</dt>
+          <dd class="text-sm text-slate-500">Class styles</dd>
+        </div>
+        <div>
+          <dt class="text-2xl font-semibold text-slate-900">4.9★</dt>
+          <dd class="text-sm text-slate-500">Average rating</dd>
+        </div>
+      </dl>
     </div>
 
-    <!-- Photo placeholder: soft blue gradient -->
+    <!-- Hero image with glossy frame + floating glass card -->
     <div class="relative">
-      <div
-        class="flex aspect-[4/5] items-end justify-center rounded-3xl bg-gradient-to-br from-soft-light via-soft/40 to-soft shadow-lg shadow-soft/20"
-      >
-        <span class="pb-6 text-sm text-white/80">Dhaarna&rsquo;s photo</span>
+      <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-soft-light via-soft/30 to-soft opacity-70 blur-xl"></div>
+      <img
+        src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1000&q=80"
+        alt="Woman practicing yoga in a calm setting"
+        class="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-xl shadow-soft/30"
+        loading="eager"
+      />
+      <div class="absolute -bottom-5 -left-5 rounded-2xl border border-white/60 bg-white/80 px-5 py-4 shadow-lg backdrop-blur">
+        <p class="text-xs font-medium uppercase tracking-wide text-soft">Next class</p>
+        <p class="mt-1 text-sm font-semibold text-slate-800">Vinyasa Flow · Tue 7:00 AM</p>
       </div>
     </div>
   </section>
 
-  <!-- Highlights -->
-  <section class="mx-auto max-w-6xl px-6 pb-8">
-    <div class="grid gap-6 md:grid-cols-3">
+  <!-- Popular classes -->
+  <section class="mx-auto max-w-6xl px-6 py-12">
+    <div class="flex items-end justify-between">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 md:text-4xl">Popular classes</h2>
+        <p class="mt-2 text-slate-500">Start with what students love most.</p>
+      </div>
+      <a href={`${base}/classes/`} class="hidden text-sm font-medium text-soft transition-colors hover:text-soft-dark md:block">
+        View all classes →
+      </a>
+    </div>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
-        [
-          { icon: '🧘‍♀️', title: 'Mindful movement', text: 'Slow, intentional sequences that meet you where you are.' },
-          { icon: '🌿', title: 'Calm spaces', text: 'A peaceful, judgment-free environment for every level.' },
-          { icon: '💙', title: 'Personal guidance', text: 'Small groups and gentle adjustments, online or in person.' },
-        ].map((item) => (
-          <div class="rounded-2xl border border-slate-100 bg-white/70 p-8 text-center shadow-sm transition-shadow hover:shadow-md">
-            <div class="text-3xl">{item.icon}</div>
-            <h2 class="mt-4 text-lg font-semibold text-slate-800">{item.title}</h2>
-            <p class="mt-2 text-sm leading-relaxed text-slate-500">{item.text}</p>
-          </div>
+        popularClasses.map((c) => (
+          <article class="group overflow-hidden rounded-2xl border border-slate-100 bg-white/80 shadow-sm backdrop-blur transition-all hover:-translate-y-1 hover:shadow-md">
+            <div class="overflow-hidden">
+              <img
+                src={c.img}
+                alt={c.name}
+                class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-slate-800">{c.name}</h3>
+              <p class="mt-1 text-sm text-slate-500">{c.duration} · {c.level}</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="font-semibold text-slate-900">₹{c.price}</span>
+                <a href={`${base}/book/`} class="rounded-full bg-soft px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-soft-dark">Book</a>
+              </div>
+            </div>
+          </article>
         ))
       }
+    </div>
+    <a href={`${base}/classes/`} class="mt-6 block text-center text-sm font-medium text-soft md:hidden">View all classes →</a>
+  </section>
+
+  <!-- About Dhaarna -->
+  <section class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-2">
+    <div class="relative order-2 md:order-1">
+      <div class="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-tr from-soft/30 to-soft-light blur-lg"></div>
+      <img
+        src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&w=1000&q=80"
+        alt="Yoga practice at home"
+        class="aspect-[5/4] w-full rounded-[1.75rem] object-cover shadow-lg shadow-soft/20"
+        loading="lazy"
+      />
+    </div>
+    <div class="order-1 md:order-2">
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-900 md:text-4xl">Meet Dhaarna</h2>
+      <p class="mt-5 leading-relaxed text-slate-500">
+        A certified yoga instructor with a passion for slow, intentional movement. Dhaarna blends
+        classical Hatha foundations with modern flow, breathwork, and meditation — creating a
+        practice that meets you exactly where you are.
+      </p>
+      <ul class="mt-7 space-y-3 text-slate-600">
+        <li class="flex items-center gap-3"><span class="text-soft">✓</span> RYT-200 certified instructor</li>
+        <li class="flex items-center gap-3"><span class="text-soft">✓</span> Online &amp; in-person sessions</li>
+        <li class="flex items-center gap-3"><span class="text-soft">✓</span> Small groups, personal attention</li>
+      </ul>
+      <a
+        href={`${base}/contact/`}
+        class="mt-8 inline-block rounded-full border border-soft/40 bg-white/70 px-7 py-3 font-medium text-soft backdrop-blur transition-all hover:bg-soft-light"
+      >
+        Say hello
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="mx-auto max-w-6xl px-6 py-12">
+    <h2 class="text-center text-2xl font-semibold tracking-tight text-slate-900 md:text-4xl">What students say</h2>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {
+        testimonials.map((t) => (
+          <figure class="rounded-2xl border border-white/60 bg-white/70 p-7 shadow-sm backdrop-blur">
+            <blockquote class="text-sm leading-relaxed text-slate-600">“{t.quote}”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-soft-dark">{t.name}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="rounded-[2rem] bg-gradient-to-r from-soft to-soft-dark px-8 py-14 text-center shadow-xl shadow-soft/30">
+      <h2 class="text-2xl font-semibold tracking-tight text-white md:text-4xl">Begin your practice today</h2>
+      <p class="mx-auto mt-3 max-w-md text-white/80">Your first class is the hardest part. Dhaarna will guide you through the rest.</p>
+      <a
+        href={`${base}/book/`}
+        class="mt-8 inline-block rounded-full bg-white px-8 py-3 font-medium text-soft-dark shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+      >
+        Book a Class
+      </a>
     </div>
   </section>
 </Layout>
