@@ -49,7 +49,7 @@ const carousel = [
 
 <Layout title="Yoga with Dhaarna — Find stillness. Move with breath." transparentNav>
   <!-- 1. Hero -->
-  <section id="hero" class="relative flex min-h-screen items-center justify-center overflow-hidden">
+  <section id="hero" class="relative overflow-hidden">
     <img
       src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=2000&q=80"
       alt="Yoga practice at sunrise in the mountains"
@@ -58,21 +58,27 @@ const carousel = [
     />
     <div class="absolute inset-0 bg-olive/55"></div>
 
-    <div class="relative z-10 mx-auto max-w-3xl px-6 pb-24 text-center">
-      <h1 class="font-serif text-4xl italic leading-tight text-cream md:text-7xl">
-        Find stillness.<br />Move with breath.
-      </h1>
-      <p class="mt-6 text-base text-cream/80 md:text-lg">
-        Online &amp; in-person yoga with Dhaarna · Himachal Pradesh
-      </p>
-      <a
-        href={`${base}/book/`}
-        class="mt-10 inline-block rounded-full bg-gold px-9 py-4 font-medium text-olive shadow-lg shadow-olive/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-dark"
-      >
-        Book your session
-      </a>
-      <p class="mt-5 text-sm text-cream/60">No commitment. Just a conversation.</p>
+    <!-- First screen: image and content only, edge to edge -->
+    <div class="relative z-10 flex min-h-screen items-center justify-center">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <h1 class="font-serif text-4xl italic leading-tight text-cream md:text-7xl">
+          Find stillness.<br />Move with breath.
+        </h1>
+        <p class="mt-6 text-base text-cream/80 md:text-lg">
+          Online &amp; in-person yoga with Dhaarna · Himachal Pradesh
+        </p>
+        <a
+          href={`${base}/book/`}
+          class="mt-10 inline-block rounded-full bg-gold px-9 py-4 font-medium text-olive shadow-lg shadow-olive/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-dark"
+        >
+          Book your session
+        </a>
+        <p class="mt-5 text-sm text-cream/60">No commitment. Just a conversation.</p>
+      </div>
     </div>
+
+    <!-- Extra image area below the fold; the wave only appears while scrolling -->
+    <div class="h-28 md:h-36" aria-hidden="true"></div>
 
     <!-- 2. Wave SVG divider -->
     <svg
