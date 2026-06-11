@@ -4,11 +4,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  transparentNav?: boolean;
 }
 
 const {
   title = 'Yoga with Dhaarna',
   description = 'Online & in-person yoga with Dhaarna · Himachal Pradesh. Find stillness. Move with breath.',
+  transparentNav = false,
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -36,7 +38,12 @@ const links = [
     />
   </head>
   <body class="min-h-screen bg-cream font-sans text-olive antialiased">
-    <header class="sticky top-0 z-30 border-b border-olive/5 bg-cream/85 backdrop-blur">
+    <header
+      id="site-header"
+      class={`top-0 z-30 w-full border-b border-olive/5 bg-cream/85 backdrop-blur transition-all duration-500 ease-out ${
+        transparentNav ? 'fixed -translate-y-full opacity-0' : 'sticky'
+      }`}
+    >
       <nav class="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href={`${base}/`} class="font-serif text-xl italic tracking-tight text-olive">
           Yoga with Dhaarna
@@ -106,5 +113,25 @@ const links = [
         </p>
       </div>
     </footer>
+
+    <script>
+      // On pages with a full-screen hero, keep the navbar hidden while the hero
+      // is in view and slide it in once the visitor scrolls past it.
+      const header = document.getElementById('site-header');
+      const hero = document.getElementById('hero');
+      if (header && hero) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              header.classList.add('-translate-y-full', 'opacity-0');
+            } else {
+              header.classList.remove('-translate-y-full', 'opacity-0');
+            }
+          },
+          { threshold: 0.12 }
+        );
+        observer.observe(hero);
+      }
+    </script>
   </body>
 </html>
