@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Yoga with Dhaarna — Find your balance, breathe your truth">
+  <!-- Hero -->
+  <section class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
+    <div>
+      <p class="mb-4 text-sm font-medium uppercase tracking-widest text-soft">Yoga with Dhaarna</p>
+      <h1 class="text-4xl font-semibold leading-tight tracking-tight text-slate-900 md:text-6xl">
+        Find your balance, <span class="text-soft">breathe your truth</span>
+      </h1>
+      <p class="mt-6 max-w-md text-lg leading-relaxed text-slate-500">
+        Calm, mindful yoga for every body. Join Dhaarna for classes that help you slow down,
+        reconnect, and move with intention.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href={`${base}/book/`}
+          class="rounded-full bg-soft px-7 py-3 font-medium text-white shadow-sm shadow-soft/30 transition-all hover:-translate-y-0.5 hover:bg-soft-dark"
+        >
+          Book a Class
+        </a>
+        <a
+          href={`${base}/classes/`}
+          class="rounded-full border border-soft/40 px-7 py-3 font-medium text-soft transition-all hover:-translate-y-0.5 hover:bg-soft-light"
+        >
+          Explore Classes
+        </a>
+      </div>
+    </div>
+
+    <!-- Photo placeholder: soft blue gradient -->
+    <div class="relative">
+      <div
+        class="flex aspect-[4/5] items-end justify-center rounded-3xl bg-gradient-to-br from-soft-light via-soft/40 to-soft shadow-lg shadow-soft/20"
+      >
+        <span class="pb-6 text-sm text-white/80">Dhaarna&rsquo;s photo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="mx-auto max-w-6xl px-6 pb-8">
+    <div class="grid gap-6 md:grid-cols-3">
+      {
+        [
+          { icon: '🧘‍♀️', title: 'Mindful movement', text: 'Slow, intentional sequences that meet you where you are.' },
+          { icon: '🌿', title: 'Calm spaces', text: 'A peaceful, judgment-free environment for every level.' },
+          { icon: '💙', title: 'Personal guidance', text: 'Small groups and gentle adjustments, online or in person.' },
+        ].map((item) => (
+          <div class="rounded-2xl border border-slate-100 bg-white/70 p-8 text-center shadow-sm transition-shadow hover:shadow-md">
+            <div class="text-3xl">{item.icon}</div>
+            <h2 class="mt-4 text-lg font-semibold text-slate-800">{item.title}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-slate-500">{item.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

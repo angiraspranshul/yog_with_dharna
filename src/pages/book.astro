@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Book a Class — Yoga with Dhaarna">
+  <section class="mx-auto max-w-4xl px-6 py-16 md:py-24">
+    <div class="max-w-xl">
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">Book a Class</h1>
+      <p class="mt-4 text-lg text-slate-500">
+        Pick a time that works for you. Your mat is waiting.
+      </p>
+    </div>
+
+    <!--
+      Calendly embed placeholder.
+      Replace YOUR_CALENDLY_USERNAME below with the real Calendly scheduling link,
+      e.g. https://calendly.com/yogawithdhaarna
+    -->
+    <div class="mt-12 overflow-hidden rounded-2xl border border-slate-100 bg-white/80 shadow-sm">
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/YOUR_CALENDLY_USERNAME"
+        style="min-width: 320px; height: 700px;"
+      >
+        <div class="flex h-[700px] flex-col items-center justify-center gap-3 p-10 text-center">
+          <span class="text-4xl">🗓️</span>
+          <p class="font-medium text-slate-700">Online booking is coming soon.</p>
+          <p class="max-w-sm text-sm text-slate-500">
+            Until then, send a DM to
+            <a
+              href="https://instagram.com/yogawithdhaarna"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-soft hover:text-soft-dark"
+            >@yogawithdhaarna</a>
+            to reserve your spot.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="https://assets.calendly.com/assets/external/widget.js" async is:inline></script>
+  </section>
+</Layout>

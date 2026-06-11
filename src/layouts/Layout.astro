@@ -1,0 +1,150 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Yoga with Dhaarna',
+  description = 'Calm, mindful yoga classes with Dhaarna. Find your balance, breathe your truth.',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const links = [
+  { href: `${base}/`, label: 'Home' },
+  { href: `${base}/classes/`, label: 'Classes' },
+  { href: `${base}/book/`, label: 'Book' },
+  { href: `${base}/instagram/`, label: 'Instagram' },
+  { href: `${base}/contact/`, label: 'Contact' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="relative min-h-screen overflow-x-hidden bg-white font-sans text-slate-700 antialiased">
+    <!-- Glossy animated background objects -->
+    <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <header class="sticky top-0 z-20 border-b border-slate-100 bg-white/80 backdrop-blur">
+      <nav class="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href={`${base}/`} class="text-lg font-semibold tracking-tight text-slate-800">
+          yoga<span class="text-soft">with</span>dhaarna
+        </a>
+
+        <input id="nav-toggle" type="checkbox" class="peer hidden" />
+        <label
+          for="nav-toggle"
+          class="cursor-pointer rounded-lg p-2 text-slate-600 transition-colors hover:bg-soft-light md:hidden"
+          aria-label="Toggle navigation menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </label>
+
+        <ul
+          class="absolute left-0 top-full hidden w-full flex-col gap-1 border-b border-slate-100 bg-white px-6 py-4 shadow-sm peer-checked:flex md:static md:flex md:w-auto md:flex-row md:items-center md:gap-8 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+        >
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-soft-light hover:text-soft-dark md:p-0 md:hover:bg-transparent md:hover:text-soft"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="mt-24 border-t border-slate-100 bg-white/70">
+      <div class="mx-auto flex max-w-6xl flex-col items-center gap-3 px-6 py-10 text-center text-sm text-slate-500 md:flex-row md:justify-between md:text-left">
+        <p>&copy; {new Date().getFullYear()} Yoga with Dhaarna. All rights reserved.</p>
+        <a
+          href="https://instagram.com/yogawithdhaarna"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-soft transition-colors hover:text-soft-dark"
+        >
+          @yogawithdhaarna
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    opacity: 0.35;
+    background: linear-gradient(135deg, #5b8fa8 0%, #bfd9e5 55%, rgba(255, 255, 255, 0.9) 100%);
+    will-change: transform;
+  }
+  .blob-1 {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    right: -100px;
+    animation: drift-1 18s ease-in-out infinite;
+  }
+  .blob-2 {
+    width: 340px;
+    height: 340px;
+    bottom: -80px;
+    left: -120px;
+    animation: drift-2 22s ease-in-out infinite;
+  }
+  .blob-3 {
+    width: 260px;
+    height: 260px;
+    top: 40%;
+    left: 55%;
+    opacity: 0.2;
+    animation: drift-3 26s ease-in-out infinite;
+  }
+  @keyframes drift-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-40px, 50px) scale(1.08); }
+  }
+  @keyframes drift-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, -40px) scale(1.1); }
+  }
+  @keyframes drift-3 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-60px, -40px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .blob {
+      animation: none;
+    }
+  }
+</style>

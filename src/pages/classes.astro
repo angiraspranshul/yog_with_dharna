@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const levelStyles: Record<string, string> = {
+  Beginner: 'bg-soft-light text-soft-dark',
+  Intermediate: 'bg-soft/15 text-soft-dark',
+  Advanced: 'bg-soft text-white',
+  'All levels': 'bg-slate-100 text-slate-600',
+};
+
+const classes = [
+  { icon: '🌅', name: 'Morning Hatha', duration: '60 min', level: 'Beginner', price: 499 },
+  { icon: '🌊', name: 'Vinyasa Flow', duration: '75 min', level: 'Intermediate', price: 699 },
+  { icon: '🌙', name: 'Yin & Restore', duration: '60 min', level: 'All levels', price: 549 },
+  { icon: '🤰', name: 'Prenatal Yoga', duration: '45 min', level: 'Beginner', price: 599 },
+  { icon: '🔥', name: 'Power Yoga', duration: '60 min', level: 'Advanced', price: 749 },
+  { icon: '🪷', name: 'Meditation & Breathwork', duration: '30 min', level: 'All levels', price: 349 },
+];
+---
+
+<Layout title="Classes — Yoga with Dhaarna">
+  <section class="mx-auto max-w-6xl px-6 py-16 md:py-24">
+    <div class="max-w-xl">
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">Classes</h1>
+      <p class="mt-4 text-lg text-slate-500">
+        From gentle morning flows to deep restorative sessions — find the practice that fits your rhythm.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        classes.map((c) => (
+          <article class="flex flex-col rounded-2xl border border-slate-100 bg-white/80 p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+            <div class="text-4xl">{c.icon}</div>
+            <h2 class="mt-4 text-lg font-semibold text-slate-800">{c.name}</h2>
+            <div class="mt-3 flex items-center gap-3 text-sm text-slate-500">
+              <span>{c.duration}</span>
+              <span class={`rounded-full px-3 py-1 text-xs font-medium ${levelStyles[c.level]}`}>{c.level}</span>
+            </div>
+            <div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-5">
+              <span class="text-lg font-semibold text-slate-900">₹{c.price}</span>
+              <a
+                href={`${base}/book/`}
+                class="rounded-full bg-soft px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-soft-dark"
+              >
+                Book
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
