@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { adminDb, adminAuth, adminBucket } from "../../../lib/firebase/admin";
+import { adminDb, adminAuth } from "../../../lib/firebase/admin";
 
 export const POST: APIRoute = async ({ request, cookies }) => {
   try {
@@ -14,28 +14,10 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     const duration = formData.get("duration") as string;
     const level = formData.get("level") as string;
     const desc = formData.get("desc") as string;
-    const imageFile = formData.get("image") as File | null;
+    const imgUrl = (formData.get("imageUrl") as string) || "";
 
     if (!name || !price || !duration || !level || !desc) {
       return new Response(JSON.stringify({ error: "Missing required fields" }), { status: 400 });
-    }
-
-    let imgUrl = "";
-
-    if (imageFile && imageFile.size > 0) {
-      // Upload image to Firebase Storage via Admin SDK
-      const ext = imageFile.name.split(".").pop() || "jpg";
-      const fileName = `classes/${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`;
-      const file = adminBucket.file(fileName);
-      const buffer = Buffer.from(await imageFile.arrayBuffer());
-
-      await file.save(buffer, {
-        metadata: { contentType: imageFile.type },
-      });
-
-      // Make the file publicly readable
-      await file.makePublic();
-      imgUrl = `https://storage.googleapis.com/${adminBucket.name}/${fileName}`;
     }
 
     // Save to Firestore

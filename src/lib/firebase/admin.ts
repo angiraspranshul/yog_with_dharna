@@ -1,7 +1,6 @@
 import { getApps, initializeApp, cert } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
-import { getStorage } from 'firebase-admin/storage';
 
 // In Vercel, environment variables can be parsed. We will expect a base64 encoded JSON string
 // for the service account to avoid issues with newlines in stringified JSON via env vars.
@@ -27,11 +26,8 @@ const serviceAccount = getServiceAccount();
 if (!getApps().length && serviceAccount) {
   initializeApp({
     credential: cert(serviceAccount),
-    storageBucket: process.env.PUBLIC_FIREBASE_STORAGE_BUCKET || import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET,
   });
 }
 
 export const adminAuth = getAuth();
 export const adminDb = getFirestore();
-export const adminBucket = getStorage().bucket();
-
