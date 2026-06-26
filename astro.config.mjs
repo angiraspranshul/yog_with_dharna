@@ -8,8 +8,5 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     plugins: [tailwindcss()],
-    ssr: {
-      noExternal: ['firebase-admin', 'jwks-rsa']
-    }
   },
 });
