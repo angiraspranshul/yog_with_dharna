@@ -1,0 +1,143 @@
+---
+import AdminLayout from '../../../../layouts/AdminLayout.astro';
+import { adminDb } from '../../../../lib/firebase/admin';
+
+const { id } = Astro.params;
+
+let classData = null;
+try {
+  const doc = await adminDb.collection('classes').doc(id).get();
+  if (doc.exists) {
+    classData = { id: doc.id, ...doc.data() };
+  } else {
+    return Astro.redirect('/admin');
+  }
+} catch (error) {
+  console.error("Error fetching class:", error);
+  return Astro.redirect('/admin');
+}
+---
+
+<AdminLayout title="Edit Class">
+  <div class="mb-6">
+    <a href="/admin" class="text-sage-dark hover:underline text-sm font-medium">&larr; Back to Dashboard</a>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8 max-w-3xl">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Edit Class</h2>
+
+    <form id="edit-class-form" class="space-y-6" data-id={classData.id}>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Class Name</label>
+          <input type="text" id="name" name="name" value={classData.name} required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-sage focus:ring-1 focus:ring-sage outline-none" placeholder="e.g. Morning Hatha" />
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Price (₹)</label>
+          <input type="number" id="price" name="price" value={classData.price} required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-sage focus:ring-1 focus:ring-sage outline-none" placeholder="e.g. 499" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Duration</label>
+          <input type="text" id="duration" name="duration" value={classData.duration} required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-sage focus:ring-1 focus:ring-sage outline-none" placeholder="e.g. 60 min" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Level</label>
+          <select id="level" name="level" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-sage focus:ring-1 focus:ring-sage outline-none bg-white">
+            <option value="Beginner" selected={classData.level === "Beginner"}>Beginner</option>
+            <option value="Intermediate" selected={classData.level === "Intermediate"}>Intermediate</option>
+            <option value="Advanced" selected={classData.level === "Advanced"}>Advanced</option>
+            <option value="All levels" selected={classData.level === "All levels"}>All levels</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+        <textarea id="desc" name="desc" required rows="3" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-sage focus:ring-1 focus:ring-sage outline-none" placeholder="Brief description of the class...">{classData.desc}</textarea>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Class Image (Leave empty to keep current image)</label>
+        <input type="file" id="image" name="image" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-sage-light file:text-sage-dark hover:file:bg-sage hover:file:text-white transition-colors cursor-pointer" />
+        <div id="image-preview" class={`mt-4 h-48 w-full md:w-1/2 rounded-lg bg-gray-100 overflow-hidden ${classData.img ? '' : 'hidden'}`}>
+          <img id="preview-img" src={classData.img} class="w-full h-full object-cover" />
+        </div>
+      </div>
+
+      <div id="status-msg" class="hidden rounded-lg p-3 text-sm"></div>
+
+      <div class="pt-4 border-t border-gray-100">
+        <button type="submit" id="submit-btn" class="bg-sage hover:bg-sage-dark text-white px-6 py-2 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          Update Class
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('edit-class-form') as HTMLFormElement;
+    const imageInput = document.getElementById('image') as HTMLInputElement;
+    const previewDiv = document.getElementById('image-preview');
+    const previewImg = document.getElementById('preview-img') as HTMLImageElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const statusMsg = document.getElementById('status-msg') as HTMLDivElement;
+
+    // Image preview
+    imageInput?.addEventListener('change', () => {
+      const file = imageInput.files?.[0];
+      if (file && previewImg && previewDiv) {
+        const url = URL.createObjectURL(file);
+        previewImg.src = url;
+        previewDiv.classList.remove('hidden');
+      }
+    });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const id = form.dataset.id;
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Updating...";
+      statusMsg.classList.add('hidden');
+
+      try {
+        // Build FormData
+        const formData = new FormData();
+        formData.append('name', (document.getElementById('name') as HTMLInputElement).value);
+        formData.append('price', (document.getElementById('price') as HTMLInputElement).value);
+        formData.append('duration', (document.getElementById('duration') as HTMLInputElement).value);
+        formData.append('level', (document.getElementById('level') as HTMLSelectElement).value);
+        formData.append('desc', (document.getElementById('desc') as HTMLTextAreaElement).value);
+        
+        const file = imageInput.files?.[0];
+        if (file) {
+          formData.append('image', file);
+        }
+
+        const res = await fetch(`/api/classes/${id}`, {
+          method: 'PUT',
+          body: formData,
+        });
+
+        if (res.ok) {
+          window.location.href = "/admin";
+        } else {
+          const data = await res.json();
+          throw new Error(data.error || "Failed to update class");
+        }
+
+      } catch (error: any) {
+        console.error(error);
+        statusMsg.textContent = error.message || "Error updating class. Check console for details.";
+        statusMsg.className = "rounded-lg p-3 text-sm bg-red-50 text-red-700 border border-red-200";
+        statusMsg.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Update Class";
+      }
+    });
+  </script>
+</AdminLayout>

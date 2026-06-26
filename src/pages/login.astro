@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// If already logged in, redirect to admin
+const sessionCookie = Astro.cookies.get('session')?.value;
+if (sessionCookie) {
+  return Astro.redirect('/admin');
+}
+---
+
+<Layout title="Admin Login | Yoga with Dhaarna" transparentNav={false}>
+  <section class="min-h-[70vh] flex items-center justify-center py-20 px-6">
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl shadow-olive/5 p-8 border border-olive/5">
+      <div class="text-center mb-8">
+        <h1 class="font-serif text-3xl italic text-olive">Admin Access</h1>
+        <p class="text-olive/60 text-sm mt-2">Log in to manage your classes</p>
+      </div>
+      
+      <form id="login-form" class="space-y-5">
+        <div>
+          <label for="email" class="block text-sm font-medium text-olive mb-1">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required
+            class="w-full px-4 py-3 rounded-lg border border-olive/20 focus:border-sage focus:ring-1 focus:ring-sage outline-none transition-colors"
+          />
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-olive mb-1">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            required
+            class="w-full px-4 py-3 rounded-lg border border-olive/20 focus:border-sage focus:ring-1 focus:ring-sage outline-none transition-colors"
+          />
+        </div>
+        <div id="error-message" class="text-red-500 text-sm hidden"></div>
+        <button 
+          type="submit" 
+          id="submit-btn"
+          class="w-full bg-sage hover:bg-sage-dark text-white font-medium py-3 rounded-lg transition-colors flex justify-center items-center gap-2"
+        >
+          Sign In
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    import { signInWithEmailAndPassword } from "firebase/auth";
+    import { auth } from "../lib/firebase/client";
+
+    const form = document.getElementById("login-form") as HTMLFormElement;
+    const errorMsg = document.getElementById("error-message");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      if(errorMsg) errorMsg.classList.add('hidden');
+      if(submitBtn) {
+        submitBtn.innerHTML = 'Signing in...';
+        submitBtn.setAttribute('disabled', 'true');
+      }
+
+      const email = (document.getElementById("email") as HTMLInputElement).value;
+      const password = (document.getElementById("password") as HTMLInputElement).value;
+
+      try {
+        // Authenticate with Firebase Client SDK
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const idToken = await userCredential.user.getIdToken();
+
+        // Send token to our server to create a session cookie
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ idToken }),
+        });
+
+        if (res.ok) {
+          // Redirect to admin dashboard
+          window.location.href = "/admin";
+        } else {
+          throw new Error("Failed to create session");
+        }
+      } catch (error: any) {
+        console.error("Login Error:", error);
+        if(errorMsg) {
+          errorMsg.textContent = error.message || "Invalid credentials. Please try again.";
+          errorMsg.classList.remove('hidden');
+        }
+      } finally {
+        if(submitBtn) {
+          submitBtn.innerHTML = 'Sign In';
+          submitBtn.removeAttribute('disabled');
+        }
+      }
+    });
+  </script>
+</Layout>

@@ -13,7 +13,8 @@ const {
   transparentNav = false,
 } = Astro.props;
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 const links = [
   { href: `${base}/`, label: 'Home' },
   { href: `${base}/classes/`, label: 'Classes' },
@@ -36,6 +37,7 @@ const links = [
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script src="https://checkout.razorpay.com/v1/checkout.js" is:inline></script>
   </head>
   <body class="min-h-screen bg-cream font-sans text-olive antialiased">
     <header
@@ -110,6 +112,9 @@ const links = [
         </div>
         <p class="mt-12 border-t border-cream/10 pt-6 text-center text-xs text-cream/40">
           &copy; {new Date().getFullYear()} Yoga with Dhaarna. All rights reserved.
+        </p>
+        <p class="mt-3 text-center">
+          <a href={`${base}/login`} class="text-[0.65rem] text-cream/20 transition-colors hover:text-cream/50">Admin</a>
         </p>
       </div>
     </footer>
