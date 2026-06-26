@@ -10,7 +10,7 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({ error: "Missing payment verification parameters" }), { status: 400 });
     }
 
-    const secret = import.meta.env.RAZORPAY_KEY_SECRET;
+    const secret = process.env.RAZORPAY_KEY_SECRET || import.meta.env.RAZORPAY_KEY_SECRET;
     
     if (!secret) {
         console.error("RAZORPAY_KEY_SECRET is not defined");

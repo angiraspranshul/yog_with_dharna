@@ -21,8 +21,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Initialize Razorpay
     const razorpay = new Razorpay({
-      key_id: import.meta.env.RAZORPAY_KEY_ID,
-      key_secret: import.meta.env.RAZORPAY_KEY_SECRET,
+      key_id: process.env.RAZORPAY_KEY_ID || import.meta.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET || import.meta.env.RAZORPAY_KEY_SECRET,
     });
 
     const options = {
